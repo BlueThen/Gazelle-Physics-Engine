@@ -1,5 +1,7 @@
 #include "gazelle.h"
 
+// blah blah comments
+
 void gazelle::setup(){
     // Smooth edges
     //ofEnableSmoothing();
