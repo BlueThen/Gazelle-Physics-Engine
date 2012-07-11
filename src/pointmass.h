@@ -9,14 +9,21 @@ public:
         PointMass();     
  
         // Methods
-        void update(float, vector<PointMass>, int, int);
+		void inertia();
+		void accelerate(float);
+        void update(float, int, int);
         void draw();
  
         // Properties
-        int x;
-        int y;
-		float vX;
-		float vY;
+        float x;
+        float y;
+
+		float lastX;
+		float lastY;
+
+		float accX;
+		float accY;
+
         ofColor color;
 };
 #endif
