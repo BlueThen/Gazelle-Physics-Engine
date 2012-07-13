@@ -66,5 +66,7 @@ void PointMass::update(float elapsedTime, int mouseX, int mouseY){
 void PointMass::draw(){
     ofSetColor(color);
     ofFill();
-    ofCircle((int)x, (int)y, 2);
+    //ofStroke();
+	ofRect((int)x, (int)y,1,1);
+	//ofCircle((int)x, (int)y, 2);
 }

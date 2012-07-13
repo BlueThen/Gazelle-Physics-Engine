@@ -2,7 +2,8 @@
  
 #include "ofMain.h"
  
-#include "pointmass.h" // Add this
+#include "pointmass.h"
+#include "pmlink.h"
 #include <vector>
 
 class gazelle : public ofBaseApp {
@@ -21,7 +22,6 @@ public:
         void dragEvent(ofDragInfo dragInfo);
         void gotMessage(ofMessage msg);
  
-        vector<PointMass> pointmasses;   // Replaces the previous variables 
-                        // with a new object that contains 
-                        // the previous information
+        vector<PointMass> pointmasses;
+		vector<PMLink> links;
 };

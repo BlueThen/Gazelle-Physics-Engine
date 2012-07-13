@@ -1,35 +1,36 @@
 #include "gazelle.h"
 
 void gazelle::setup(){
-    // Smooth edges
-    //ofEnableSmoothing();
- 
-    // Fixed framerate
-    //ofSetFrameRate(30);
-	
 	cout << "resizing pointmasses\n";
-	pointmasses.resize(20000);
-
+	pointmasses.resize(6000);
+	links.resize(5999);
 	cout << "initializing pointmasses\n";
 
-	for (int i = 0; i < pointmasses.size(); i++) {
+	pointmasses[0] = PointMass();
+	for (int i = 1; i < 6000; i++) {
 		pointmasses[i] = PointMass();
+		links[i-1] = PMLink(pointmasses[i], pointmasses[i-1], 1, 1);
 	}
+
+	//for (int i = 0; i < pointmasses.size(); i++) {
+	//	pointmasses[i] = PointMass();
+	//}
 }
  
 void gazelle::update(){
+	for (int c = 0; c < 3; c++) {
+		for (int i = 0; i < links.size(); i++) {
+			links[i].resolve();
+		}
+		pointmasses[0].x = mouseX;
+		pointmasses[0].y = mouseY;
+	}
 	for (int i = 0; i < pointmasses.size(); i++) {
 		//pointmasses[i].accelerate(1);
 
 		pointmasses[i].inertia();
 
-		pointmasses[i].update(1, mouseX, mouseY);
-
-		//pointmasses[i].vX *= 0.95;
-		//pointmasses[i].vY *= 0.95;
-
-		//pointmasses[i].x += pointmasses[i].vX;   
-		//pointmasses[i].y += pointmasses[i].vY;
+		//pointmasses[i].update(1, mouseX, mouseY);
 	}
 	cout << ofGetFrameRate() << " fps\n";
 }
