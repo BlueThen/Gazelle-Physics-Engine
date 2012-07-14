@@ -4,9 +4,10 @@
 #include "ofMain.h"
  
 class PointMass {
-public:
+	public:
         // Constructor
-        PointMass();     
+        PointMass();
+		PointMass(float, float);
  
         // Methods
 		void inertia();
@@ -25,5 +26,10 @@ public:
 		float accY;
 
         ofColor color;
+
+		bool pinned;
+		float pinX, pinY;
+	private:
+		void init(float, float);
 };
 #endif

@@ -22,6 +22,13 @@ public:
         void dragEvent(ofDragInfo dragInfo);
         void gotMessage(ofMessage msg);
  
-        vector<PointMass> pointmasses;
+        vector<PointMass*> pointmasses;
 		vector<PMLink> links;
+
+		float mouseInfluenceSquared;
+		int pmouseX, pmouseY;
+
+		bool mouseDrag;
+
+		float distPointToSegmentSquared(float,float, float,float, float,float);
 };
